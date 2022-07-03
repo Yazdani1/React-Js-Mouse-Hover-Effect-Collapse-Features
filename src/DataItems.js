@@ -24,27 +24,37 @@ const DataItems = ({ title, des, index }) => {
   };
 
   return (
-    <div
-      key={index}
-      className="data-item"
-      onMouseEnter={() => setIsShowing(index)}
-      onMouseLeave={() => setIsShowing(-1)}
-      // onMouseEnter={() => toggle(index)}
-      // onMouseLeave={() => toggle(index)}
-      // onMouseEnter={() => setIsShown(true)}
-      // onMouseLeave={() => setIsShown(false)}
-    >
-      <div>
-        <h5>{title}</h5>
-        {showDetails ? <p>{des}</p> : null}
+    <div className="container main">
+      <div
+        key={index}
+        className="data-item"
+        onMouseEnter={() => setIsShowing(index)}
+        onMouseLeave={() => setIsShowing(-1)}
+        // onMouseEnter={() => toggle(index)}
+        // onMouseLeave={() => toggle(index)}
+        // onMouseEnter={() => setIsShown(true)}
+        // onMouseLeave={() => setIsShown(false)}
+      >
+        <div>
+          <h5>{title}</h5>
+          {showDetails ? <p>{des}</p> : null}
+          {isShowing == index ? (
+            <p style={{ backgroundColor: "white" }}>
+              <FcExpand size={30} onClick={handleIconClick} />
+            </p>
+          ) : null}
+        </div>
         {isShowing == index ? (
-          <p style={{ backgroundColor: "white" }}><FcExpand size={30} onClick={handleIconClick} /></p>
+          <div className="icons">
+            <FcExpand size={30} onClick={handleIconClick} />
+            <FcCheckmark size={30} />
+          </div>
         ) : null}
       </div>
+
       {isShowing == index ? (
-        <div className="icons">
-          <FcExpand size={30} onClick={handleIconClick} />
-          <FcCheckmark size={30} />
+        <div className="card-hover-item">
+          <p>{title}</p>
         </div>
       ) : null}
     </div>
