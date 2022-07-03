@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import DataItems from "./DataItems";
 
-function App() {
+const App = () => {
+  const data = [
+    {
+      title: "First Post",
+      des: "It is a long established fact that a reader will of a page when looking at its layout.",
+    },
+    {
+      title: "Second Post",
+      des: "It is a long established fact that a reader will of a page when looking at its layout.",
+    },
+    {
+      title: "Third Post",
+      des: "It is a long established fact that a reader will of a page when looking at its layout.",
+    },
+    {
+      title: "Fourth Post",
+      des: "It is a long established fact that a reader will of a page when looking at its layout.",
+    },
+    {
+      title: "Fith Post",
+      des: "It is a long established fact that a reader will of a page when looking at its layout.",
+    },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container post-card">
+      {data.map((item, index) => (
+        <DataItems key={index} {...item} index={index} />
+      ))}
     </div>
   );
-}
+};
 
 export default App;
